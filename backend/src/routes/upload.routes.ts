@@ -28,11 +28,6 @@ uplaodRouter.post(
             text: cleanedText
         })
 
-        const embeddings: {
-            text: string,
-            embedding: number[] | undefined
-        }[] = []
-
         if (chunks.length === 0) {
             return res.status(400).json({
                 message: "No chunks genrated"
@@ -44,7 +39,7 @@ uplaodRouter.post(
         const vectors: number[][] = []
 
         const pdfId = Date.now()
-
+// Embeddings genrated for each chunks
         for (let i = 0; i < chunks.length; i++) {
             const embedding = await generateEmbedding(chunks[i]!)
 
@@ -57,13 +52,8 @@ uplaodRouter.post(
 
         }
 
-        // console.log("Chunks:", chunks.length)
-        // console.log("Ids:", ids.length)
-        // console.log("Documents:", documents.length)
-        // console.log("Vectors:", vectors.length)
-
         const collection = await getCollection()
-
+// Embeddings stored in the DB
         await collection.add({
             ids,
             documents,
@@ -76,10 +66,7 @@ uplaodRouter.post(
 
         res.json({
             message: "PDF parsed successfully",
-            textLength: cleanedText.length,
-            totalChunks: chunks.length,
-            firstChunk: chunks[0],
-            totalEmbeddings: embeddings.length
+            toalStoedEmbeddings: count
         })
 
     })

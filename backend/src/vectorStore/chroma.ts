@@ -9,3 +9,9 @@ export const getCollection = async () => {
         name: "pdf-documents"
     })
 }
+
+export const dropCollection = async () => {
+    return await chromaClient.deleteCollection({
+        name: "pdf-documents"
+    })
+}

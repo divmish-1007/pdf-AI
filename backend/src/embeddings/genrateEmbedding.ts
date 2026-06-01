@@ -1,7 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv"
-import { chunkText } from "../utils/chunkText.js";
-import { cleanText } from "../utils/cleanText.js";
  
 dotenv.config()
 

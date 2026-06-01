@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import chatRouter from "./routes/chat.routes.js"
 import uplaodRouter from "./routes/upload.routes.js"
+import deleteRouter from "./routes/drop.database.js"
 
 
 
@@ -11,5 +12,6 @@ app.use(express.json())
 
 app.use('/chat', chatRouter)
 app.use('/upload', uplaodRouter)
+app.use('/', deleteRouter)
 
 export default app
