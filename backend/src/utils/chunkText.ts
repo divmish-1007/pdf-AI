@@ -21,5 +21,5 @@ export const chunkText = ({
 
         start = end - overlap
     }
-    return chunks
+    return chunks || ""
 }
